@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>This is app</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/bundle.js"></script>
+</head>
+<body>
+  <div id="app">
+
+
+
+
+    <!-- country in countries, that name then knows the whole country. that country is fetched, and ran thru selectedCountry -->
+    <label for="country-dropdown">Select country:</label>
+    <select id="country-dropdown" v-on:click="fetchCountry" v-model="selectedCountry">
+      <option class="countryDropdown"
+      v-for="country in countries" :value="country">{{ country.name }}</option>
+    </select>
+
+
+    <section>
+      <div v-if="selectedCountry" class="country">
+<h1>Country detail</h1>
+        <ul>
+          <li>
+            <h3>This Country is: {{ selectedCountry.name }}</h3>
+            <p>Population: {{ selectedCountry.population}}</p>
+            <p>Capital City: {{ selectedCountry.capital}}</p>
+            <p>Continent: {{ selectedCountry.region}}</p>
+            <img id="flag" :src="selectedCountry.flag" >
+            <br>
+            <input type="checkbox">Favourite</input>
+          </li>
+          <hr>
+        </ul>
+      </div>
+    </section>
+
+
+    <h2>The total population of all countries is: {{ totalPopulation }}</h2>
+    <h2>List of all countries in the world:</h2>
+
+    <div class="countryname" v-if="countries" v-for="country in countries">
+      <ul>
+        <li>
+          <h3>This Country is: {{ country.name }}</h3>
+          <p>Population: {{ country.population}}</p>
+          <p>Capital City: {{ country.capital}}</p>
+          <p>Continent: {{ country.region}}</p>
+          <img id="flag" :src="country.flag" >
+          <br>
+          <input type="checkbox">Favourite</input>
+        </li>
+        <hr>
+      </ul>
+    </div>
+
+
+  </div>
+
+</body>
+</html>
